@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Two-Agent Syllabus Lens</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <div class="eyebrow"></div>
+      <h1></h1>
+    </div>
+    <div class="mode-switch" id="modeSwitch" hidden>
+      <button data-mode="Abi" class="active">Abi</button>
+      <button data-mode="Tim">Tim</button>
+      <button data-mode="Compare">Compare</button>
+    </div>
+  </header>
+
+  <main>
+    <section id="uploadPanel" class="upload-card">
+      <h2>Open a syllabus</h2>
+      <p>Upload a PDF. The system will find syllabus concepts, run Abi and Tim through them in reading order, and anchor their reactions to the matching text.</p>
+      <form id="uploadForm">
+        <input id="pdfFile" type="file" accept="application/pdf" required />
+        <button type="submit">Analyze syllabus</button>
+      </form>
+      <!-- <p class="hint">For frontend-only testing, start the server with <code>MOCK_AGENTS=1</code>.</p> -->
+
+      <div id="analysisProgress" class="analysis-progress" hidden aria-live="polite">
+        <div class="progress-topline">
+          <div>
+            <div id="progressStage" class="progress-stage">Preparing analysis</div>
+            <div id="progressDetail" class="progress-detail">Getting the syllabus ready…</div>
+          </div>
+          <div id="progressPercent" class="progress-percent">0%</div>
+        </div>
+        <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          <div id="progressBar" class="progress-bar"></div>
+        </div>
+        <div class="progress-footer">
+          <span id="reactionCounter">PDF analysis starting</span>
+          <span id="elapsedTime">0:00 elapsed</span>
+        </div>
+      </div>
+
+      <div id="status"></div>
+    </section>
+
+    <section id="workspace" class="workspace" hidden>
+      <aside class="topic-rail">
+        <div class="rail-heading">Detected concepts</div>
+        <div id="topicList"></div>
+      </aside>
+
+      <section class="viewer-shell">
+        <div class="viewer-toolbar">
+          <div id="filename"></div>
+          <div id="matchSummary"></div>
+        </div>
+        <div id="pages" class="pages"></div>
+      </section>
+
+      <aside id="reactionPanel" class="reaction-panel">
+        <div class="empty-state">
+          <div class="bubble-icon">💭</div>
+          <h3>Select a reaction marker</h3>
+          <p>Click an annotation beside the syllabus to inspect the student response.</p>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+<script src="/static/app.js"></script>
+</body>
+</html>
