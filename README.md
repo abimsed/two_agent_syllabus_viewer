@@ -62,8 +62,8 @@ Before starting the app, set:
 
 ```bash
 
-export GENERATIVE_AGENTS_ROOT="/Users/abim/Abim/practice/generative_agents_ollama/reverie/backend_server"
-export PERSONA_STORAGE_BASE="/Users/abim/Abim/practice/generative_agents_ollama/environment/frontend_server/storage/base_gen_students/personas"
+export GENERATIVE_AGENTS_ROOT="/Users/{user}/{user}/practice/generative_agents_ollama/reverie/backend_server"
+export PERSONA_STORAGE_BASE="/Users/{user}/{user}/practice/generative_agents_ollama/environment/frontend_server/storage/base_gen_students/personas"
 
 python3 uvicorn app:app --reload
 ```
